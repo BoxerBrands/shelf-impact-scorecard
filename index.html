@@ -4,95 +4,150 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Get the Shelf Impact Scorecard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800;900&family=Sofia+Sans+Extra+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      color-scheme: light;
-      --bg: #f7f6f3;
-      --card: #ffffff;
-      --ink: #1a1a1a;
-      --muted: #6b6b6b;
-      --accent: #d4463a;
-      --accent-ink: #ffffff;
-      --border: #e5e3de;
+      color-scheme: dark;
+      --black: #0a0a0a;
+      --white: #ffffff;
+      --grey: #9a9a9a;
+      --blue: #4472c4;
+      --blue-dark: #345a9e;
     }
     * { box-sizing: border-box; }
-    body {
+    html, body {
       margin: 0;
       min-height: 100vh;
+      background: var(--black);
+    }
+    body {
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--bg);
-      color: var(--ink);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
       padding: 24px;
+      font-family: 'Figtree', -apple-system, BlinkMacSystemFont, sans-serif;
     }
-    .card {
+    .wrap {
       width: 100%;
-      max-width: 440px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 40px 36px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      max-width: 1100px;
+    }
+    .logo-stage {
+      container-type: inline-size;
+      position: relative;
+      width: 100%;
+      aspect-ratio: 2000 / 702;
+    }
+    .logo-stage img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    /* Overlay positioned exactly over the box in the logo artwork (measured in px against the 2000x702 source) */
+    .overlay {
+      position: absolute;
+      left: calc(458 / 2000 * 100%);
+      top: calc(176 / 702 * 100%);
+      width: calc((982 - 458) / 2000 * 100%);
+      height: calc((525 - 176) / 702 * 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      text-align: left;
+      gap: 1.1cqw;
+      padding: 4.5cqw 1.1cqw 1.1cqw;
+      overflow: hidden;
     }
     h1 {
-      font-size: 26px;
-      line-height: 1.25;
-      margin: 0 0 12px;
+      margin: 0;
+      color: var(--blue);
+      font-family: 'Sofia Sans Extra Condensed', sans-serif;
+      font-weight: 800;
+      font-size: 5.2cqw;
+      line-height: 0.82;
+      letter-spacing: 0;
+      text-transform: uppercase;
     }
-    p.lede {
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.5;
-      margin: 0 0 28px;
+    form {
+      display: flex;
+      flex-direction: row;
+      gap: 0.5cqw;
+      width: 100%;
     }
-    form { display: flex; flex-direction: column; gap: 12px; }
     input[type="email"] {
-      padding: 13px 14px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      font-size: 15px;
-      outline: none;
-    }
-    input[type="email"]:focus { border-color: var(--accent); }
-    button {
-      padding: 13px 14px;
+      flex: 1 1 auto;
+      min-width: 0;
+      padding: 0.65cqw 0.8cqw;
       border: none;
-      border-radius: 10px;
-      background: var(--accent);
-      color: var(--accent-ink);
-      font-size: 15px;
-      font-weight: 600;
-      cursor: pointer;
+      font-size: 0.85cqw;
+      outline: none;
+      background: #e4e4e4;
+      color: #444;
+      font-family: 'Figtree', sans-serif;
+      font-weight: 400;
     }
+    input[type="email"]:focus { outline: 0.07cqw solid var(--blue); }
+    button {
+      flex: 0 0 auto;
+      padding: 0.65cqw 1cqw;
+      border: none;
+      background: var(--blue);
+      color: var(--white);
+      font-size: 0.85cqw;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      font-family: 'Figtree', sans-serif;
+    }
+    button:hover:not(:disabled) { background: var(--blue-dark); }
     button:disabled { opacity: 0.6; cursor: default; }
+
+    .below {
+      margin-top: 22px;
+      text-align: center;
+    }
     .msg {
-      margin-top: 16px;
       font-size: 14px;
       line-height: 1.4;
       display: none;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 10px;
     }
     .msg.show { display: block; }
-    .msg.success { color: #1a7a3c; }
-    .msg.error { color: var(--accent); }
     .fine {
-      margin-top: 20px;
-      font-size: 12px;
-      color: var(--muted);
+      font-size: 13px;
+      color: var(--grey);
+      font-weight: 400;
+      font-family: 'Figtree', sans-serif;
+    }
+    .fine .sep {
+      margin: 0 10px;
+      color: #444;
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Get your free Shelf Impact Scorecard</h1>
-    <p class="lede">Enter your email and we'll send you a copy straight away.</p>
-    <form id="signup-form">
-      <input type="email" id="email" name="email" placeholder="you@company.com" required autocomplete="email" />
-      <button type="submit" id="submit-btn">Send me the PDF</button>
-    </form>
-    <div class="msg" id="msg"></div>
-    <p class="fine">We'll only use your email to send this resource. No spam.</p>
+  <div class="wrap">
+    <div class="logo-stage">
+      <img src="/boxer-logo.png" alt="Boxer" />
+      <div class="overlay">
+        <h1>Get your scorecard</h1>
+        <form id="signup-form">
+          <input type="email" id="email" name="email" placeholder="email goes here" required autocomplete="email" />
+          <button type="submit" id="submit-btn">Send</button>
+        </form>
+      </div>
+    </div>
+    <div class="below">
+      <div class="msg" id="msg"></div>
+      <p class="fine">We will only use your email to send this<span class="sep">|</span>No spam</p>
+    </div>
   </div>
 
   <script>
@@ -100,9 +155,9 @@
     const button = document.getElementById('submit-btn');
     const msg = document.getElementById('msg');
 
-    function showMessage(text, type) {
+    function showMessage(text) {
       msg.textContent = text;
-      msg.className = 'msg show ' + type;
+      msg.className = 'msg show';
     }
 
     form.addEventListener('submit', async (e) => {
@@ -111,7 +166,7 @@
       if (!email) return;
 
       button.disabled = true;
-      button.textContent = 'Sending...';
+      button.textContent = '...';
       msg.className = 'msg';
 
       try {
@@ -123,16 +178,16 @@
         const data = await res.json();
 
         if (res.ok) {
-          showMessage("Check your inbox — we've sent the PDF to " + email + ".", 'success');
+          showMessage("Check your inbox — we've sent the PDF to " + email + ".");
           form.reset();
         } else {
-          showMessage(data.error || 'Something went wrong. Please try again.', 'error');
+          showMessage(data.error || 'Something went wrong. Please try again.');
         }
       } catch (err) {
-        showMessage('Something went wrong. Please try again.', 'error');
+        showMessage('Something went wrong. Please try again.');
       } finally {
         button.disabled = false;
-        button.textContent = 'Send me the PDF';
+        button.textContent = 'Send';
       }
     });
   </script>
