@@ -145,6 +145,7 @@
       .wrap {
         position: relative;
         width: 67.2vw;
+        transform: translateY(-6.6vh);
       }
       .logo-stage { aspect-ratio: 1414 / 1270; }
       .logo-stage .full-logo { display: none; }
@@ -168,27 +169,38 @@
         transform: translateX(-50%);
         width: 100vw;
         padding: 0 16px;
-        margin-top: 10.9vw;
+        margin-top: 12.2vw;
       }
-      .fine { margin: 0; }
+      .fine {
+        margin: 0;
+        font-size: 1.65vw;
+      }
+      .fine .sep { margin: 0 1.27vw; }
       .box-content {
-        gap: 3cqw;
-        padding: 3.5cqw 4.2cqw 4cqw;
+        gap: 0.6cqw;
+        padding: 9.05cqw 3.9cqw 3.5cqw;
       }
-      h1 { font-size: 18.5cqw; }
+      h1 {
+        font-size: 22.1cqw;
+        font-weight: 900;
+        line-height: 0.838;
+      }
       form {
         flex-direction: column;
-        gap: 2cqw;
+        gap: 1.85cqw;
       }
       input[type="email"] {
         width: 100%;
-        font-size: 6.4cqw;
-        padding: 2cqw 3.4cqw;
+        height: 8.4cqw;
+        font-size: 4.3cqw;
+        padding: 0 2.3cqw;
       }
       button {
         width: 100%;
-        font-size: 6.4cqw;
-        padding: 2cqw 3.4cqw;
+        height: 6.4cqw;
+        font-size: 4.1cqw;
+        line-height: 1;
+        padding: 0;
       }
     }
   </style>
