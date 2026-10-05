@@ -46,11 +46,7 @@
       height: 100%;
       display: block;
     }
-    .row1 {
-      position: absolute;
-      inset: 0;
-    }
-    .letter-b, .letter-xer {
+    .logo-stage .stack-logo {
       display: none;
     }
     /* Overlay positioned exactly over the box in the logo artwork (measured in px against the 2000x702 source) */
@@ -143,42 +139,38 @@
       color: #444;
     }
 
+    /* Mobile: the supplied stacked logo (1414x1270 crop), box measured from the source file */
     @media (max-width: 700px) {
-      body { padding: 20px 16px; }
-      .wrap { max-width: 380px; }
-      .logo-stage {
-        max-width: 100%;
-        aspect-ratio: auto;
+      body { padding: 20px 0; }
+      .wrap {
+        position: relative;
+        width: 67.2vw;
       }
+      .logo-stage { aspect-ratio: 1414 / 1270; }
       .logo-stage .full-logo { display: none; }
-      .row1 {
-        position: static;
-        display: flex;
-        flex-direction: row;
-        align-items: stretch;
-        gap: 0;
-        width: 100%;
-        aspect-ratio: 806 / 349;
-      }
-      .letter-b {
+      .logo-stage .stack-logo {
         display: block;
-        width: auto;
+        position: absolute;
+        inset: 0;
+        width: 100%;
         height: 100%;
-        flex: 0 0 auto;
-      }
-      .letter-xer {
-        display: block;
-        width: 100%;
-        height: auto;
-        margin-top: 0;
       }
       .overlay {
-        position: static;
-        flex: 1 1 auto;
-        width: auto;
-        height: auto;
-        background: var(--white);
+        left: calc(488 / 1414 * 100%);
+        top: calc(2 / 1270 * 100%);
+        width: calc(908 / 1414 * 100%);
+        height: calc(605 / 1270 * 100%);
       }
+      .below {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100vw;
+        padding: 0 16px;
+        margin-top: 10.9vw;
+      }
+      .fine { margin: 0; }
     }
   </style>
 </head>
@@ -186,19 +178,16 @@
   <div class="wrap">
     <div class="logo-stage">
       <img class="full-logo" src="/boxer-logo.png" alt="Boxer" />
-      <div class="row1">
-        <img class="letter-b" src="/boxer-logo-B.png" alt="B" />
-        <div class="overlay">
-          <div class="box-content">
-            <h1>Get your scorecard</h1>
-            <form id="signup-form">
-              <input type="email" id="email" name="email" placeholder="email goes here" required autocomplete="email" />
-              <button type="submit" id="submit-btn">Send</button>
-            </form>
-          </div>
+      <img class="stack-logo" src="/boxer-logo-stacked.png" alt="Boxer" />
+      <div class="overlay">
+        <div class="box-content">
+          <h1>Get your scorecard</h1>
+          <form id="signup-form">
+            <input type="email" id="email" name="email" placeholder="email goes here" required autocomplete="email" />
+            <button type="submit" id="submit-btn">Send</button>
+          </form>
         </div>
       </div>
-      <img class="letter-xer" src="/boxer-logo-XER.png" alt="XER" />
     </div>
     <div class="below">
       <div class="msg" id="msg"></div>
