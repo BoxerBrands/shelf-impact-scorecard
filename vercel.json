@@ -1,0 +1,17 @@
+{
+  "rewrites": [
+    {
+      "source": "/scorecard.pdf",
+      "destination": "https://uqtrsmuzmnvqmphntxli.supabase.co/storage/v1/object/public/assets/Boxer%20Brands%20-%20Shelf%20Impact%20Scorecard.pdf"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/scorecard.pdf",
+      "headers": [
+        { "key": "Content-Type", "value": "application/pdf" },
+        { "key": "Content-Disposition", "value": "inline; filename=\"Boxer Brands - Shelf Impact Scorecard.pdf\"" }
+      ]
+    }
+  ]
+}
