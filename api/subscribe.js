@@ -3,6 +3,7 @@ const images = require('./_email-images');
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const FROM = 'Boxer Brands <hello@boxerbrands.com.au>';
+const PDF_URL = 'https://scorecard.boxerbrands.com.au/scorecard.pdf';
 
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -20,7 +21,6 @@ module.exports = async function handler(req, res) {
   const {
     SUPABASE_URL,
     SUPABASE_SERVICE_ROLE_KEY,
-    SUPABASE_PDF_URL,
     RESEND_API_KEY,
   } = process.env;
 
@@ -61,7 +61,7 @@ module.exports = async function handler(req, res) {
           headingUrl: 'cid:scorecard-heading',
           headingDarkUrl: 'cid:scorecard-heading-dark',
           buttonDarkUrl: 'cid:button-download-dark',
-          pdfUrl: SUPABASE_PDF_URL,
+          pdfUrl: PDF_URL,
         }),
         attachments: [
           { filename: 'boxer-brands-logo.png', content: images.logo, content_type: 'image/png', content_id: 'boxer-logo' },
@@ -79,7 +79,7 @@ module.exports = async function handler(req, res) {
           '',
           'Thank you for your interest!',
           '',
-          `Download: ${SUPABASE_PDF_URL}`,
+          `Download: ${PDF_URL}`,
           '',
           'Boxer Brands',
         ].join('\n'),
