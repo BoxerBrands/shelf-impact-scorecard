@@ -1,5 +1,5 @@
 // Generated from email/scorecard-email.html (placeholders become the URLs below).
-module.exports = function renderEmail({ logoUrl, logoDarkUrl, headingUrl, headingDarkUrl, pdfUrl }) {
+module.exports = function renderEmail({ logoUrl, logoDarkUrl, headingUrl, headingDarkUrl, buttonDarkUrl, pdfUrl }) {
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -62,13 +62,14 @@ module.exports = function renderEmail({ logoUrl, logoDarkUrl, headingUrl, headin
           </tr>
           <tr>
             <td align="center" style="padding:20px 20px 0 20px;">
-              <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" class="light-img">
                 <tr>
                   <td align="center" bgcolor="#4472c4" width="138" height="46" class="btn-cell" style="background:#4472c4;background-image:linear-gradient(#4472c4,#4472c4);width:138px;height:46px;">
                     <a href="${pdfUrl}" class="btn-link" style="display:block;width:138px;line-height:46px;font-family:'Figtree','Helvetica Neue',Arial,sans-serif;font-size:16px;text-transform:uppercase;color:#ffffff;text-decoration:none;">Download</a>
                   </td>
                 </tr>
               </table>
+              <a href="${pdfUrl}" class="dark-img" style="display:none;max-height:0;overflow:hidden;mso-hide:all;line-height:0;font-size:0;"><img src="${buttonDarkUrl}" width="138" height="46" alt="Download" style="display:block;width:138px;height:46px;border:0;"></a>
             </td>
           </tr>
           <tr>

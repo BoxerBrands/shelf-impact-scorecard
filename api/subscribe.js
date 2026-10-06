@@ -60,6 +60,7 @@ module.exports = async function handler(req, res) {
           logoDarkUrl: 'cid:boxer-logo-dark',
           headingUrl: 'cid:scorecard-heading',
           headingDarkUrl: 'cid:scorecard-heading-dark',
+          buttonDarkUrl: 'cid:button-download-dark',
           pdfUrl: SUPABASE_PDF_URL,
         }),
         attachments: [
@@ -67,6 +68,7 @@ module.exports = async function handler(req, res) {
           { filename: 'boxer-brands-logo-dark.png', content: images.logoDark, content_type: 'image/png', content_id: 'boxer-logo-dark' },
           { filename: 'scorecard-heading.png', content: images.heading, content_type: 'image/png', content_id: 'scorecard-heading' },
           { filename: 'scorecard-heading-dark.png', content: images.headingDark, content_type: 'image/png', content_id: 'scorecard-heading-dark' },
+          { filename: 'button-download-dark.png', content: images.buttonDark, content_type: 'image/png', content_id: 'button-download-dark' },
         ],
         text: [
           "Here's your scorecard",
