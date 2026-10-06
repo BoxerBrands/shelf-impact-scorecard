@@ -3,18 +3,27 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="color-scheme" content="light only">
-  <meta name="supported-color-schemes" content="light only">
+  <meta name="color-scheme" content="light dark">
+  <meta name="supported-color-schemes" content="light dark">
   <title>Your Shelf Impact Scorecard</title>
   <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    :root { color-scheme: light only; supported-color-schemes: light only; }
-    /* Keep the white card and its colours as designed when an app switches to dark mode */
-    [data-ogsb] .card, [data-ogsb] .card td { background-color: #ffffff !important; }
-    [data-ogsc] .t-black { color: #000000 !important; }
-    [data-ogsc] .t-grey { color: #444444 !important; }
-    [data-ogsb] .btn-cell { background-color: #4472c4 !important; }
+    :root { color-scheme: light dark; supported-color-schemes: light dark; }
+    /* Dark mode setting: keep the white card as designed */
+    @media (prefers-color-scheme: dark) {
+      .card { background-color: #ffffff !important; background-image: linear-gradient(#ffffff,#ffffff) !important; }
+      .t-black { color: #000000 !important; }
+      .t-grey { color: #444444 !important; }
+      .btn-cell { background-color: #4472c4 !important; background-image: linear-gradient(#4472c4,#4472c4) !important; }
+      .btn-link { color: #ffffff !important; }
+    }
+    /* Last resort: only if Outlook itself forces its own dark mode, use the dark version of the design */
+    [data-ogsb] .card { background-color: #333333 !important; }
+    [data-ogsc] .t-black, [data-ogsc] .t-grey { color: #ffffff !important; }
+    [data-ogsb] .btn-cell { background-color: #6a9ad0 !important; }
     [data-ogsc] .btn-link { color: #ffffff !important; }
+    [data-ogsc] .light-img { display: none !important; max-height: 0 !important; overflow: hidden !important; }
+    [data-ogsc] .dark-img { display: block !important; max-height: none !important; overflow: visible !important; }
     @media only screen and (max-width: 520px) {
       .outer-pad { padding: 32px 12px !important; }
       .card-pad-top { padding-top: 40px !important; }
@@ -29,7 +38,8 @@
         <table role="presentation" width="480" cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff" class="card" style="width:100%;max-width:480px;background:#ffffff;background-image:linear-gradient(#ffffff,#ffffff);">
           <tr>
             <td align="center" class="card-pad-top" style="padding:55px 20px 0 20px;">
-              <img src="{{HEADING_URL}}" width="282" alt="Here&rsquo;s your scorecard" style="display:block;width:282px;max-width:100%;height:auto;border:0;">
+              <img src="{{HEADING_URL}}" width="282" alt="Here&rsquo;s your scorecard" class="light-img" style="display:block;width:282px;max-width:100%;height:auto;border:0;">
+              <img src="{{HEADING_DARK_URL}}" width="282" alt="Here&rsquo;s your scorecard" class="dark-img" style="display:none;max-height:0;overflow:hidden;mso-hide:all;width:282px;max-width:100%;height:auto;border:0;">
             </td>
           </tr>
           <tr>
@@ -60,7 +70,8 @@
           </tr>
           <tr>
             <td align="center" style="padding:71px 20px 37px 34px;">
-              <img src="{{LOGO_URL}}" width="159" alt="Boxer Brands" style="display:block;width:159px;max-width:100%;height:auto;border:0;">
+              <img src="{{LOGO_URL}}" width="159" alt="Boxer Brands" class="light-img" style="display:block;width:159px;max-width:100%;height:auto;border:0;">
+              <img src="{{LOGO_DARK_URL}}" width="159" alt="Boxer Brands" class="dark-img" style="display:none;max-height:0;overflow:hidden;mso-hide:all;width:159px;max-width:100%;height:auto;border:0;">
             </td>
           </tr>
         </table>
