@@ -2,6 +2,7 @@ const renderEmail = require('./_email');
 const images = require('./_email-images');
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const FROM = 'Boxer Brands <hello@boxerbrands.com.au>';
 
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -21,7 +22,6 @@ module.exports = async function handler(req, res) {
     SUPABASE_SERVICE_ROLE_KEY,
     SUPABASE_PDF_URL,
     RESEND_API_KEY,
-    FROM_EMAIL,
   } = process.env;
 
   try {
@@ -52,7 +52,7 @@ module.exports = async function handler(req, res) {
         Authorization: `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: FROM_EMAIL,
+        from: FROM,
         to: email,
         subject: 'Your Shelf Impact Scorecard from Boxer Brands',
         html: renderEmail({
