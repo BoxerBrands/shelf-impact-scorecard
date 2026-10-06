@@ -54,7 +54,7 @@ module.exports = async function handler(req, res) {
       body: JSON.stringify({
         from: FROM_EMAIL,
         to: email,
-        subject: 'Your Shelf Impact Scorecard',
+        subject: 'Your Shelf Impact Scorecard from Boxer Brands',
         html: renderEmail({
           logoUrl: 'cid:boxer-logo',
           headingUrl: 'cid:scorecard-heading',
