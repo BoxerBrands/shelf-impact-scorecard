@@ -231,8 +231,12 @@
     const button = document.getElementById('submit-btn');
     const msg = document.getElementById('msg');
 
-    function showMessage(text) {
-      msg.textContent = text;
+    function showMessage(...lines) {
+      msg.textContent = '';
+      lines.forEach((line, i) => {
+        if (i > 0) msg.appendChild(document.createElement('br'));
+        msg.appendChild(document.createTextNode(line));
+      });
       msg.className = 'msg show';
     }
 
@@ -254,7 +258,7 @@
         const data = await res.json();
 
         if (res.ok) {
-          showMessage("Check your inbox, we've sent the PDF to " + email);
+          showMessage("Check your inbox, we've sent the PDF to " + email, "If you don't receive it, please check your spam folder");
           form.reset();
         } else {
           showMessage(data.error || 'Something went wrong. Please try again.');

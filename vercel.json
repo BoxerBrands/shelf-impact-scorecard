@@ -10,7 +10,7 @@
       "source": "/scorecard.pdf",
       "headers": [
         { "key": "Content-Type", "value": "application/pdf" },
-        { "key": "Content-Disposition", "value": "inline; filename=\"Boxer Brands - Shelf Impact Scorecard.pdf\"" }
+        { "key": "Content-Disposition", "value": "attachment; filename=\"Boxer Brands - Shelf Impact Scorecard.pdf\"" }
       ]
     }
   ]
