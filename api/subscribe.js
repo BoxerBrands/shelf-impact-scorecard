@@ -61,8 +61,8 @@ module.exports = async function handler(req, res) {
           pdfUrl: SUPABASE_PDF_URL,
         }),
         attachments: [
-          { filename: 'boxer-brands-logo.png', content: images.logo, content_id: 'boxer-logo' },
-          { filename: 'scorecard-heading.png', content: images.heading, content_id: 'scorecard-heading' },
+          { filename: 'boxer-brands-logo.png', content: images.logo, content_type: 'image/png', content_id: 'boxer-logo' },
+          { filename: 'scorecard-heading.png', content: images.heading, content_type: 'image/png', content_id: 'scorecard-heading' },
         ],
         text: [
           "Here's your scorecard",
