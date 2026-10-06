@@ -1,4 +1,7 @@
+const renderEmail = require('./_email');
+
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const SITE_URL = 'https://shelf-impact-scorecard.vercel.app';
 
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -52,12 +55,24 @@ module.exports = async function handler(req, res) {
         from: FROM_EMAIL,
         to: email,
         subject: 'Your Shelf Impact Scorecard',
-        html: `
-          <p>Hi there,</p>
-          <p>Thanks for your interest! Here's your copy of the Shelf Impact Scorecard:</p>
-          <p><a href="${SUPABASE_PDF_URL}">Download the Shelf Impact Scorecard (PDF)</a></p>
-          <p>Boxer Brands</p>
-        `,
+        html: renderEmail({
+          logoUrl: `${SITE_URL}/email/boxer-brands-logo-black.png`,
+          headingUrl: `${SITE_URL}/email/heading-here-is-your-scorecard.png`,
+          pdfUrl: SUPABASE_PDF_URL,
+        }),
+        text: [
+          "Here's your scorecard",
+          '',
+          'Is your packaging pulling its weight?',
+          '',
+          'Here is your copy of The Shelf Impact Scorecard.',
+          '',
+          'Thank you for your interest!',
+          '',
+          `Download: ${SUPABASE_PDF_URL}`,
+          '',
+          'Boxer Brands',
+        ].join('\n'),
       }),
     });
 

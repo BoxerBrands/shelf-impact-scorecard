@@ -1,0 +1,68 @@
+// Generated from email/scorecard-email.html (placeholders become the three URLs below).
+module.exports = function renderEmail({ logoUrl, headingUrl, pdfUrl }) {
+  return `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="supported-color-schemes" content="light">
+  <title>Your Shelf Impact Scorecard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    @media only screen and (max-width: 520px) {
+      .outer-pad { padding: 32px 12px !important; }
+      .card-pad-top { padding-top: 40px !important; }
+    }
+  </style>
+</head>
+<body style="margin:0;padding:0;background:#000000;" bgcolor="#000000">
+  <div style="display:none;max-height:0;overflow:hidden;opacity:0;color:#000000;">Your copy of the Shelf Impact Scorecard is inside.</div>
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#000000" style="background:#000000;">
+    <tr>
+      <td align="center" class="outer-pad" style="padding:84px 16px;">
+        <table role="presentation" width="480" cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff" style="width:100%;max-width:480px;background:#ffffff;">
+          <tr>
+            <td align="center" class="card-pad-top" style="padding:55px 20px 0 20px;">
+              <img src="${headingUrl}" width="282" alt="Here&rsquo;s your scorecard" style="display:block;width:282px;max-width:100%;height:auto;border:0;">
+            </td>
+          </tr>
+          <tr>
+            <td align="center" style="padding:31px 20px 0 20px;font-family:'Figtree','Helvetica Neue',Arial,sans-serif;font-size:16.8px;line-height:24px;color:#000000;">
+              Is your packaging pulling its weight?
+            </td>
+          </tr>
+          <tr>
+            <td align="center" style="padding:13px 20px 0 20px;font-family:'Figtree','Helvetica Neue',Arial,sans-serif;font-size:16.8px;line-height:24px;color:#444444;">
+              Here is your copy of<br>The Shelf Impact Scorecard.
+            </td>
+          </tr>
+          <tr>
+            <td align="center" style="padding:7px 20px 0 20px;font-family:'Figtree','Helvetica Neue',Arial,sans-serif;font-size:16.8px;line-height:24px;color:#444444;">
+              Thank you for your interest!
+            </td>
+          </tr>
+          <tr>
+            <td align="center" style="padding:20px 20px 0 20px;">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td align="center" bgcolor="#4472c4" width="138" height="46" style="background:#4472c4;width:138px;height:46px;">
+                    <a href="${pdfUrl}" style="display:block;width:138px;line-height:46px;font-family:'Figtree','Helvetica Neue',Arial,sans-serif;font-size:16px;text-transform:uppercase;color:#ffffff;text-decoration:none;">Download</a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td align="center" style="padding:71px 20px 37px 34px;">
+              <img src="${logoUrl}" width="159" alt="Boxer Brands" style="display:block;width:159px;max-width:100%;height:auto;border:0;">
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+`;
+};

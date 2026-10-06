@@ -1,3 +1,5 @@
 .env
 .vercel
 assets/
+email/preview.html
+email/heading-render.html
